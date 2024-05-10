@@ -5,11 +5,15 @@ from urllib.parse import parse_qs, urlparse
 
 from yt_dlp import YoutubeDL
 
+from album_splitter import mp3_converter
+from album_splitter import album_arter
 from .parse_tracks import parse_tracks
 from .split_file import split_file
 from .tag_file import tag_file
 from .utils.secure_filename import secure_filename
 from .utils.ytdl_interface import ydl_opts
+import os
+
 
 
 def get_parser():
@@ -70,6 +74,12 @@ def get_parser():
         help="Extra tags for the output. `key=value` format. (default: %(default)s)",
         action="append",
     )
+    tracks_metadata_group.add_argument(
+        "-c",
+        "--cover",
+        help="The album art path that will go into the album you want to put in",
+        dest="album_art_path",
+    )
 
     output_group = parser.add_argument_group("Output")
     output_group.add_argument(
@@ -80,6 +90,7 @@ def get_parser():
         dest="folder",
         default=None,
     )
+
 
     other_group = parser.add_argument_group("Other")
     other_group.add_argument(
@@ -193,8 +204,14 @@ def main():
         track = tracks[index]
         tag_data.update({"title": str(track.title), "tracknumber": index + 1})
         tag_file(file, tag_data)
-    print(f"Done! You can find your tracks in {outfolder}")
 
+    if args.album_art_path:
+        mp3_path = mp3_converter.convert_wav_to_mp3(outfolder)
+        album_arter.add_album_art(mp3_path,args.album_art_path)
+        print("Album Cover is covered on split files")
+
+    print(f"Done! You can find your tracks in {outfolder}")
+# Example usage
 
 if __name__ == "__main__":
     main()
