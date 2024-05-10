@@ -82,6 +82,11 @@ After the first time:
 + Wait for the splitting process to complete
 + You will find your tracks in the `./splits` folder
 
+## 앨범커버 씌우기(AlbumCover Inserting)
+`python -m album_splitter --file <path/to/your/album.mp3> -c <path/cover.jpg>`
++ cover.jpg라는 이름으로 앨범커버를 준비합니다.
++ 이후 -c 옵션을 주고, 앨범커버 주소를 적어주면 mp3로 변환해 앨범커버를 씌워줍니다.
+
 ## Output Format
 
 The format of the output tracks is the same as the format of the input (same extension, same codec, same bitrate, ...), it simply does a copy of the codec. If you want to convert the output tracks to a different format, you can do this using additional tools.
