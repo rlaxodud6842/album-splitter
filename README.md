@@ -34,12 +34,12 @@ First time only:
     * MacOS: You should have it already installed or `brew install python3`
 + Open your terminal app
 + Create a virtual environment
-    * `python3 -m venv venv`
+    * `python3 -m venv venv` or  `python -m venv venv`
 + Activate the virtual environment
   * Linux/MacOS: `source venv/bin/activate`
   * Windows: `./venv/Scripts/activate`
 + Install album-splitter
-    * `python3 -m pip install album-splitter`
+    * `python3 -m pip install album-splitter` or `python -m pip install album-splitter`
 + You are ready to go!
 
 After the first time:
@@ -49,7 +49,7 @@ After the first time:
   * Linux/MacOS: `source venv/bin/activate`
   * Windows: `./venv/Scripts/activate`
 + Optional, update `album-splitter`:
-    * `python3 -m pip install --upgrade album-splitter`
+    * `python3 -m pip install --upgrade album-splitter` or `python -m pip install --upgrade album-splitter`
 + You are ready to go!
 
 ## Quick guide (from a local album)
